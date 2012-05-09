@@ -1,11 +1,11 @@
-SocketController = (function(socket){
+SocketController = function(socket){
 
  	index = function(data){
-	  socket.emit('', {socket_name: "oil_pressure"});
+		console.log(data);
 	};
 	
 	return {index: index};	
-});
+};
 
 module.exports = SocketController;
 

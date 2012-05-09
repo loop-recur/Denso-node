@@ -1,1 +1,1 @@
-require('socket_model');
+require('./socket_model');

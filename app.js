@@ -16,6 +16,7 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.set("json callback", true);
+	app.use(express.static(__dirname + '/public'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -33,6 +34,12 @@ app.configure('production', function(){
 
 io.sockets.on('connection', function (socket) {
 	require('./socket_controllers')(socket);
+	
+	socket.on('oil_pressure', function(data){
+		console.log("oil_pressure was changed!");	
+		console.log(data);	
+	});
+  
 	
 	
   // socket.emit('initial_diagram', { hello: 'world' });
