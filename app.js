@@ -34,20 +34,6 @@ app.configure('production', function(){
 
 io.sockets.on('connection', function (socket) {
 	require('./socket_controllers')(socket);
-	
-	socket.on('oil_pressure', function(data){
-		console.log("oil_pressure was changed!");	
-		console.log(data);	
-	});
-  
-	
-	
-  // socket.emit('initial_diagram', { hello: 'world' });
-  // socket.on('refresh_diagram', SocketController.index);
-
-  // socket.on('refresh_diagram', function (data) {
-  //   console.log(data);
-  // });
 });
 
 app.listen(3000, function(){
