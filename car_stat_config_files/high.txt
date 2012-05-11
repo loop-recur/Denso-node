@@ -1,0 +1,10 @@
+{"oil_pressure": 50 
+, "tire_1_pressure": 60
+, "tire_2_pressure": 60
+, "tire_3_pressure": 80
+, "tire_4_pressure": 60
+, "car_on": "on"	
+, "gas_level": 90
+, "washer_fluid_level": 80
+, "transmission_fluid": 80
+, "vehicle_speed": 95}

@@ -46,7 +46,7 @@ $(function(){
 		});
 	};
 
-	var car_stat_inputs = $('div.car_stats input, div.car_stats select');
+	var car_stat_inputs = $('div.car_stats :input');
 	
 	var getCarStats = function(){
 		var form_values = [];
@@ -85,7 +85,7 @@ $(function(){
 		var config_values = findQuickConfigValuesForName(elem.val());
 		console.log("config selected", elem.val(), "config values", config_values);
 		$.each(config_values, function(k,v){
-			var form_element = $('input[name="' + k + '"]')
+			var form_element = $('div.car_stats :input[name="' + k + '"]');
 			form_element.val(v);
 			form_element.trigger('change');
 		});
