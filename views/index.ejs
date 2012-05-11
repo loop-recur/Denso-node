@@ -1,24 +1,62 @@
-<p>
-	<strong>Oil Pressure</strong>
-	<input type="text" value="0" socket_name="oil_pressure" /> PSI
-</p>	
 
-<p>
-	<strong>Tire Pressure (in PSI)</strong>
-	<input type="text" value="0" socket_name="tire_pressure" /> PSI
-</p>
+<div class="car_stats">
+	<p>
+		<strong>Car On/Off</strong>
+		<input type="checkbox" name="car_on" /> 
+	</p>
+	<p>
+		<strong>Vehicle Speed</strong>
+		<input type="text" value="0" name="vehicle_speed" /> MPH 
+	</p>
+	<p>
+		<strong>Gas Level</strong>
+		<input type="text" value="0" name="gas_level" /> 
+	</p>
+	<p>
+		<strong>Transmission Fluid</strong>
+		<input type="text" value="0" name="transmission_fluid" /> 
+	</p>
+	<p>
+		<strong>Washer Fluid Level</strong>
+		<input type="text" value="0" name="washer_fluid_level" /> 
+	</p>
+	<p>
+		<strong>Oil Pressure</strong>
+		<input type="text" value="0" name="oil_pressure" /> PSI
+	</p>	
 
+	<p>
+		<strong>Tire 1 Pressure (in PSI)</strong>
+		<input type="text" value="0" name="tire_1_pressure" /> PSI
+	</p>
+	<p>
+		<strong>Tire 2 Pressure (in PSI)</strong>
+		<input type="text" value="0" name="tire_2_pressure" /> PSI
+	</p>
+	<p>
+		<strong>Tire 3 Pressure (in PSI)</strong>
+		<input type="text" value="0" name="tire_3_pressure" /> PSI
+	</p>
+	<p>
+		<strong>Tire 4 Pressure (in PSI)</strong>
+		<input type="text" value="0" name="tire_4_pressure" /> PSI
+	</p>
+</div>
+
+
+<!-- <hr />
+<p>Save this as a quick config:</p>
 <p>
-	<strong>Washer Fluid Level</strong>
-	<input type="text" value="0" socket_name="washer_fluid_level" /> 
+	<strong>Config Name:</strong>
+	<input type="text" id="quick_config_save_name" />
+	<button id="save_quick_config">Save</button>
 </p>
+ -->
+
 <hr />
 <p>
-	<strong>Quick Configuration: </strong>
+	<strong>Load Quick Configuration: </strong>
 	<select id="quick_config_select">
 		<option value="">Select a Quick Config</option>
-		<option value="low">Low</option>
-		<option value="medium">Medium</option>
-		<option value="high">High</option>
 	</select>
 </p>	
