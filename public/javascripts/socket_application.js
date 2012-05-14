@@ -1,5 +1,5 @@
 var quick_configs
-	, socket = io.connect('http://localhost:3000');
+	, socket = io.connect('http://localhost:4000');
 	
 // var QuickConfig = {
 // 	low: {
@@ -31,13 +31,7 @@ $(function(){
 	var setQuickConfigs = function(data){
 		console.log("setQuickConfigs", data);
 		QuickConfigs = data;
-		// var config_names = [];
-		// $.each(QuickConfigs, function(index, config){
-		// 	console.log('config data', config);
-		// 	config_names.push(config['config_name']);
-		// });	
-		// console.log("config_names", config_names);
-		
+
 		var quick_config_select = $('select#quick_config_select');
 		$.each(QuickConfigs, function(index, config_data){
 			$.each(config_data, function(k,v){

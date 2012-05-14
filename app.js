@@ -5,7 +5,15 @@
 
 var express = require('express')
 	, app = express.createServer()
- 	, io = require('socket.io').listen(app);	
+ 	, io = require('socket.io').listen(app, {origins: '*:*'});	
+
+ // io.set('transports', [
+ //   'websocket'
+ // , 'flashsocket'
+ // , 'htmlfile'
+ // , 'xhr-polling'
+ // , 'jsonp-polling'
+ // ]);
 	
 require('./http_controllers')(app);
 require('./models');
@@ -36,7 +44,7 @@ io.sockets.on('connection', function (socket) {
 	require('./socket_controllers')(socket);
 });
 
-app.listen(3000, function(){
+app.listen(4000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
 
