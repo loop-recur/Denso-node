@@ -1,29 +1,6 @@
 var quick_configs
 	, socket = io.connect('http://localhost:4000');
 	
-// var QuickConfig = {
-// 	low: {
-// 		oil_pressure: 10, 
-// 		tire_1_pressure: 20,
-// 		tire_2_pressure: 20,
-// 		tire_3_pressure: 20,
-// 		tire_4_pressure: 20,
-// 		washer_fluid_level: 5
-// 	}, 
-// 	
-// 	medium: {
-// 		oil_pressure: 40, 
-// 		tire_pressure: 40,
-// 		washer_fluid_level: 30
-// 	}, 
-// 	
-// 	high: {
-// 		oil_pressure: 90, 
-// 		tire_pressure: 70,
-// 		washer_fluid_level: 80
-// 	}
-// };
-
 $(function(){	
 
 	var QuickConfigs;
@@ -31,7 +8,6 @@ $(function(){
 	var setQuickConfigs = function(data){
 		console.log("setQuickConfigs", data);
 		QuickConfigs = data;
-
 		var quick_config_select = $('select#quick_config_select');
 		$.each(QuickConfigs, function(index, config_data){
 			$.each(config_data, function(k,v){
