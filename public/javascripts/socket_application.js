@@ -108,7 +108,8 @@ $(function(){
 	};
 	
 	
-	$('button#run_config').click(function(){
+	$('button#run_config').click(function(event){
+		event.preventDefault();
 		var config_key = $('select#quick_config_select').val();
 		console.log("config_key", config_key);
 		var config_values = QuickConfigs[config_key];
