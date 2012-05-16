@@ -3,20 +3,22 @@ var quick_configs
 	
 $(function(){	
 
-	var QuickConfigs;
+	var QuickConfigs
+		, StatUpdateInterval = 3000
+		, config_looper
+		, car_stat_inputs
+		, config_run_timer;
 
 	var setQuickConfigs = function(data){
 		console.log("setQuickConfigs", data);
 		QuickConfigs = data;
 		var quick_config_select = $('select#quick_config_select');
-		$.each(QuickConfigs, function(index, config_data){
-			$.each(config_data, function(k,v){
-				quick_config_select.append('<option value="'+ k +'">' + k + '</option>');				
-			});
+		$.each(QuickConfigs, function(k,v){
+			quick_config_select.append('<option value="'+ k +'">' + k + '</option>');				
 		});
 	};
 
-	var car_stat_inputs = $('div.car_stats :input');
+	car_stat_inputs = $('div.car_stats :input');
 	
 	var getCarStats = function(){
 		var form_values = [];
@@ -31,14 +33,6 @@ $(function(){
 		return form_values;
 	};
 	
-	var findQuickConfigValuesForName = function(name){
-		var found_config;
-		$.each(QuickConfigs, function(index, config){
-			if(config[name]){found_config = config[name]; }
-		});
-		return found_config;
-	}
-		
 	car_stat_inputs.change(function(){
 		var elem = $(this);
  		var event_name = elem.attr('name')
@@ -46,21 +40,96 @@ $(function(){
 		console.log("changed: event_name", event_name, "car_stats", car_stats);
 		socket.emit('car_stat_update', {event_name: event_name, data: car_stats});
 	});
-	
-	
 
-	$('select#quick_config_select').change(function(){
-		var elem = $(this);
-		console.log('QuickConfigs', QuickConfigs);
-		var config_values = findQuickConfigValuesForName(elem.val());
-		console.log("config selected", elem.val(), "config values", config_values);
-		$.each(config_values, function(k,v){
-			var form_element = $('div.car_stats :input[name="' + k + '"]');
-			form_element.val(v);
-			form_element.trigger('change');
-		});
-	});	
 	
+	var ConfigLooper = function(config_data){
+		var value_index = 0; 
+		
+		var _lastElementOfArray = function(arr){
+			var index = Math.max(arr.length - 1, 0);
+			return arr[index];
+		};	
+		
+		var _isArray = function(obj){
+			bool = Object.prototype.toString.call(obj) === '[object Array]' ? true : false
+			return bool;
+		};	
+			
+		// Returns true or false as to whether the data exists for increment value data with the index of value_index.	
+		var _incrementalDataExists = function(){
+			var existence = false;
+			$.each(config_data, function(k, v){
+				if(_isArray(v) && typeof(v[value_index]) != 'undefined'){
+					existence = true;
+					return false;
+				}
+			});
+			return existence;
+		};
+		
+		// Will turn multiple values in a config into a single set of key/value pairs.
+		var _sanitizedData = function(){
+			var data = {};
+			if(!_incrementalDataExists()){ value_index = 0;}
+			$.each(config_data, function(k,v){
+				if(_isArray(v)){
+					deduced_value = typeof(v[value_index]) == 'undefined' ? _lastElementOfArray(v) : v[value_index]
+				} else {
+					deduced_value = v
+				}
+				data[k] = deduced_value;
+			});
+			value_index++;
+			return data;
+		};	
+		
+		var _updateStats = function(){
+			var data = _sanitizedData();
+			console.log("sanitized_data = ", data);
+			$.each(data, function(k,v){
+				$('div.car_stats :input[name="' + k+ '"]').val(v);
+			});
+			// Put in something here to send all the data to the server. 
+			socket.emit('car_stat_update', {event_name: "Running Config", data: data});
+		};
+		
+		var startLooping = function(){
+			stopLooping();
+			_updateStats();
+			config_run_timer = setInterval(_updateStats, StatUpdateInterval);
+		};
+	
+		var stopLooping = function(){
+			console.log("clearing timer(?)", config_run_timer); 
+			clearInterval(config_run_timer); 
+		};
+		
+		return {startLooping: startLooping, stopLooping: stopLooping};
+	};
+	
+	
+	$('button#run_config').click(function(){
+		var config_key = $('select#quick_config_select').val();
+		console.log("config_key", config_key);
+		var config_values = QuickConfigs[config_key];
+		console.log("sending config values to the looper", config_values);
+		config_looper = ConfigLooper(config_values);
+		var elem = $(this);
+		var command_value = elem.val();
+		console.log("command value", command_value, "for elem", elem);
+		if(command_value == "1"){
+			elem.val("0");
+			elem.html("Stop Config");
+			config_looper.startLooping();
+		} else {
+			socket.emit("stop_running_config");
+			elem.val("1");
+			elem.html("Run Config"); 
+			config_looper.stopLooping();
+		}
+	});	
+
+
 	socket.on("quick_configs", setQuickConfigs)
 	socket.emit("request_configs");
 	

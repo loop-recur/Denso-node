@@ -2,17 +2,14 @@ SocketController = function(socket){
 	
 	var _allConfigsAsJson = function(){
 		var fs = require('fs')
-			, configs = []
+			, configs = {}
 			, dir = __dirname + "/../car_stat_config_files";
 		var filenames = fs.readdirSync(dir)
 		for(var i=0, fname; fname=filenames[i]; i++){
 			var config_name = fname.split('.')[0];
 			var raw_data = fs.readFileSync(dir + '/' + fname, 'utf8');
-			var json_data = {};
-			json_data[config_name] = JSON.parse(raw_data);
-			configs.push(json_data);
+			configs[config_name] = JSON.parse(raw_data);
 		}
-		console.log('configs', configs);
 		return configs;
 	};
 
@@ -26,7 +23,21 @@ SocketController = function(socket){
 		socket.emit("quick_configs", _allConfigsAsJson());
 	};
 	
-	return {index: index, getConfigs: getConfigs};	
+	startRunningConfig = function(){
+		console.log("starRunningConfig Called!");
+		var all_configs = _allConfigsAsJson()
+			, data;
+		data = all_configs.low;
+		console.log("all_configs", all_configs, "data", data);
+		socket.emit("update_config_from_server", data);
+	};
+
+	// Clear timeouts
+	stopRunningConfig = function(){
+		
+	};
+	
+	return {index: index, getConfigs: getConfigs, startRunningConfig: startRunningConfig, stopRunningConfig: stopRunningConfig};	
 };
 
 module.exports = SocketController;

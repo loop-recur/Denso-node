@@ -3,17 +3,12 @@
  * Module dependencies.
  */
 
+var AppConfig = {};
+AppConfig.run_interval = 3000;
+
 var express = require('express')
 	, app = express.createServer()
  	, io = require('socket.io').listen(app, {origins: '*:*'});	
-
- // io.set('transports', [
- //   'websocket'
- // , 'flashsocket'
- // , 'htmlfile'
- // , 'xhr-polling'
- // , 'jsonp-polling'
- // ]);
 	
 require('./http_controllers')(app);
 require('./models');
