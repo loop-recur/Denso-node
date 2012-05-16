@@ -1,58 +1,203 @@
+<body data-spy="scroll" data-target=".subnav" data-offset="50" id="top">
 
-<div class="car_stats">
-	<p>
-		<strong>Car On/Off</strong>
-		<select name="car_on">
-			<option value></option>
-			<option value="on">On</option>
-			<option value="off">Off</option>
-		</select>
-	</p>
-	<p>
-		<strong>Vehicle Speed</strong>
-		<input type="text" value="0" name="vehicle_speed" /> MPH 
-	</p>
-	<p>
-		<strong>Gas Level</strong>
-		<input type="text" value="0" name="gas_level" /> 
-	</p>
-	<p>
-		<strong>Transmission Fluid</strong>
-		<input type="text" value="0" name="transmission_fluid" /> 
-	</p>
-	<p>
-		<strong>Washer Fluid Level</strong>
-		<input type="text" value="0" name="washer_fluid_level" /> 
-	</p>
-	<p>
-		<strong>Oil Pressure</strong>
-		<input type="text" value="0" name="oil_pressure" /> PSI
-	</p>	
 
-	<p>
-		<strong>Tire 1 Pressure (in PSI)</strong>
-		<input type="text" value="0" name="tire_1_pressure" /> PSI
-	</p>
-	<p>
-		<strong>Tire 2 Pressure (in PSI)</strong>
-		<input type="text" value="0" name="tire_2_pressure" /> PSI
-	</p>
-	<p>
-		<strong>Tire 3 Pressure (in PSI)</strong>
-		<input type="text" value="0" name="tire_3_pressure" /> PSI
-	</p>
-	<p>
-		<strong>Tire 4 Pressure (in PSI)</strong>
-		<input type="text" value="0" name="tire_4_pressure" /> PSI
-	</p>
+<!-- Navbar
+  ================================================== -->
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+      	<h2>Denso Admin Panel</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+
+<!-- Forms
+================================================== -->
+<section id="forms">
+
+<div class="row">
+  
+  <div class="span1">
+    <h3>The Basics</h3>
+</div>
+
+<div class="span10">
+    <form class="well form-horizontal">
+    	
+    	<fieldset>
+    	
+    	<div class="control-group">
+          <label class="control-label" for="select01">Vehicle On/Off</label>
+          <div class="controls">
+            <select id="select01" name="car_on">
+							<option value></option>
+              <option value="off">Off</option>
+              <option value="on">On</option>
+            </select>
+          </div>
+     </div>
+     
+     <div class="control-group">
+        <label class="control-label" for="appendedInput">Vehicle Speed</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on" name="vehicle_speed" value="0">MPH</span>
+            </div>
+          </div>
+      </div>
+      
+      </fieldset>
+   	</form>
+</div>
+</div>
+
+ <div class="row">
+
+    <div class="span1">
+    <h3>Levels</h3>
+</div>
+
+<div class="span10">
+    <form class="well form-horizontal">
+    	
+    	<fieldset>
+     
+     <div class="control-group">
+        <label class="control-label" for="appendedInput">Gas Level</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="gas_level"><span class="add-on">gal.</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Transmission Fluid</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="transmission_fluid"><span class="add-on">liters</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Washer Fluid</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="washer_fluid_level"><span class="add-on">liters</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Oil Pressure</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="oil_pressure" ><span class="add-on">psi</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Tire Pressure 1</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="tire_1_pressure" ><span class="add-on">psi</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Tire Pressure 2</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="tire_2_pressure" ><span class="add-on">psi</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Tire Pressure 3</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="tire_3_pressure" ><span class="add-on">psi</span>
+            </div>
+          </div>
+      </div>
+      
+             <div class="control-group">
+        <label class="control-label" for="appendedInput">Tire Pressure 4</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="span2" id="appendedInput" size="16" type="text" value="0" name="tire_4_pressure" ><span class="add-on">psi</span>
+            </div>
+          </div>
+      </div>
+      
+      </fieldset>
+    
+   	</form>
+</div>
+</div>
+
+<div class="row">
+  
+  <div class="span1">
+    <h3>Quick Config</h3>
+</div>
+
+<div class="span10">
+    <form class="well form-horizontal">
+
+    	<fieldset>
+    	
+    	<div class="control-group">
+          <label class="control-label" for="select01">Load Quick Configuration:</label>
+          <div class="controls">
+            <select id="quick_config_select select01">
+              <option value="">Select a Quick Config</option>
+            </select>
+          </div>
+					<button name="run_config" id="run_config" value="1">Run Config</button>
+     </div>
+      
+      </fieldset>
+   	</form>
+</div>
 </div>
 
 
-<hr />
-<p>
-	<strong>Load Quick Configuration: </strong>
-	<select id="quick_config_select">
-		<option value="">Select a Quick Config</option>
-	</select>
-	<button name="run_config" id="run_config" value="1">Run Config</button>
-</p>	
+   <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <p>&#169 2012 Denso Automotive</p>
+    </footer>
+
+  </div><!-- /container -->
+
+
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+  <script src="stylesheets/assets/js/jquery.js"></script>
+  <script src="stylesheets/assets/js/google-code-prettify/prettify.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-transition.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-alert.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-modal.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-dropdown.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-scrollspy.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-tab.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-tooltip.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-popover.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-button.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-collapse.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-carousel.js"></script>
+  <script src="stylesheets/assets/js/bootstrap-typeahead.js"></script>
+  <script src="stylesheets/assets/js/application.js"></script>
+
+</body>
