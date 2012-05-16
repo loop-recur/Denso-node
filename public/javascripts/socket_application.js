@@ -94,7 +94,7 @@ $(function(){
 		};
 		
 		var startLooping = function(){
-			stopLooping();
+			if(config_run_timer){stopLooping();}
 			_updateStats();
 			config_run_timer = setInterval(_updateStats, StatUpdateInterval);
 		};
