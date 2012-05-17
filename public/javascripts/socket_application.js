@@ -89,8 +89,9 @@ $(function(){
 			$.each(data, function(k,v){
 				$('div.car_stats :input[name="' + k+ '"]').val(v);
 			});
+			var car_stats = getCarStats();
 			// Put in something here to send all the data to the server. 
-			socket.emit('car_stat_update', {event_name: "Running Config", data: data});
+			socket.emit('car_stat_update', {event_name: "Running Config", data: car_stats});
 		};
 		
 		var startLooping = function(){
