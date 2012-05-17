@@ -1,8 +1,8 @@
 {"oil_pressure": [50, 60, 100] 
-, "tire_1_pressure": [70, 80, 90]
-, "tire_2_pressure": [70, 80, 90]
-, "tire_3_pressure": [70, 80, 90]
-, "tire_4_pressure": [70, 80, 90]
+, "tire_1_pressure": [40, 45, 50]
+, "tire_2_pressure": [40, 45, 50]
+, "tire_3_pressure": [40, 45, 50]
+, "tire_4_pressure": [40, 45, 50]
 , "car_on": "on"	
 , "gas_level": [90, 80, 70]
 , "washer_fluid_level": [80, 10]
