@@ -44,8 +44,8 @@ io.sockets.on('connection', function (socket) {
 	require('./socket_controllers')(socket);
 });
 
-app.listen(4000, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-});
-
-
+if (!module.parent) {	
+	var port = process.env.PORT || 4000;
+  app.listen(port);
+	console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+}
