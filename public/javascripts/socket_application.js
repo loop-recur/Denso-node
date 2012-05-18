@@ -4,7 +4,7 @@ var quick_configs
 $(function(){	
 
 	var QuickConfigs
-		, StatUpdateInterval = 3000
+		, StatUpdateInterval = 6000
 		, config_looper
 		, car_stat_inputs
 		, config_run_timer;

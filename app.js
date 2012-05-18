@@ -4,12 +4,17 @@
  */
 
 var AppConfig = {};
-AppConfig.run_interval = 3000;
+AppConfig.run_interval = 6000;
 
 var express = require('express')
 	, app = express.createServer()
  	, io = require('socket.io').listen(app, {origins: '*:*'});	
-	
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+
 require('./http_controllers')(app);
 require('./models');
 
