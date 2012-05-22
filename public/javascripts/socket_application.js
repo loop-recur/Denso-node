@@ -116,6 +116,8 @@ $(function(){
 		var config_values = QuickConfigs[config_key];
 		console.log("sending config values to the looper", config_values);
 		config_looper = ConfigLooper(config_values);
+    var interval = Number($('input#set-interval-input').val());
+    StatUpdateInterval = interval;
 		var elem = $(this);
 		var command_value = elem.val();
 		console.log("command value", command_value, "for elem", elem);
