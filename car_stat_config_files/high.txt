@@ -7,4 +7,8 @@
 , "gas_level": [90, 80, 70]
 , "washer_fluid_level": [80, 10]
 , "transmission_fluid": [80, 12]
-, "vehicle_speed": [95, 100, 120]}
+, "vehicle_speed": [95, 100, 120]
+, "front_driver_wheel_detail": [80, 90, 100]
+, "front_passenger_wheel_detail": [80, 90, 100]
+, "rear_driver_wheel_detail": [80, 90, 100]
+, "rear_passenger_wheel_detail": [80, 90, 100]}

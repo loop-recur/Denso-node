@@ -32,12 +32,16 @@ SocketController = function(socket){
 		socket.emit("update_config_from_server", data);
 	};
 
+  submitCurrentStats = function() {
+    socket.broadcast.emit('getDataFields');
+  };
+
 	// Clear timeouts
 	stopRunningConfig = function(){
 		
 	};
 	
-	return {index: index, getConfigs: getConfigs, startRunningConfig: startRunningConfig, stopRunningConfig: stopRunningConfig};	
+	return {index: index, getConfigs: getConfigs, startRunningConfig: startRunningConfig, stopRunningConfig: stopRunningConfig, submitCurrentStats: submitCurrentStats};	
 };
 
 module.exports = SocketController;

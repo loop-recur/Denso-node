@@ -9,6 +9,10 @@ $(function(){
 		, car_stat_inputs
 		, config_run_timer;
 
+  var setDataFields = function() {
+		socket.emit('car_stat_update', {event_name: 'current_data_stats', data: getCarStats()});
+  };
+
 	var setQuickConfigs = function(data){
 		console.log("setQuickConfigs", data);
 		QuickConfigs = data;
@@ -116,6 +120,8 @@ $(function(){
 		var config_values = QuickConfigs[config_key];
 		console.log("sending config values to the looper", config_values);
 		config_looper = ConfigLooper(config_values);
+    var interval = Number($('input#set-interval-input').val());
+    StatUpdateInterval = interval;
 		var elem = $(this);
 		var command_value = elem.val();
 		console.log("command value", command_value, "for elem", elem);
@@ -132,8 +138,9 @@ $(function(){
 	});	
 
 
-	socket.on("quick_configs", setQuickConfigs)
+	socket.on("quick_configs", setQuickConfigs);
 	socket.emit("request_configs");
+  socket.on('getDataFields', setDataFields);
 	
 });
 
