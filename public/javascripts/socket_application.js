@@ -13,6 +13,9 @@ $(function(){
 		socket.emit('car_stat_update', {event_name: 'current_data_stats', data: getCarStats()});
   };
 
+	$('.add-on').click(function(){ $(this).siblings('input').trigger('change'); });
+
+
 	var setQuickConfigs = function(data){
 		console.log("setQuickConfigs", data);
 		QuickConfigs = data;
