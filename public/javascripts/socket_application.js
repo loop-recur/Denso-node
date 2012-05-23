@@ -9,6 +9,10 @@ $(function(){
 		, car_stat_inputs
 		, config_run_timer;
 
+  var setDataFields = function() {
+		socket.emit('car_stat_update', {event_name: 'current_data_stats', data: getCarStats()});
+  };
+
 	var setQuickConfigs = function(data){
 		console.log("setQuickConfigs", data);
 		QuickConfigs = data;
@@ -134,8 +138,9 @@ $(function(){
 	});	
 
 
-	socket.on("quick_configs", setQuickConfigs)
+	socket.on("quick_configs", setQuickConfigs);
 	socket.emit("request_configs");
+  socket.on('getDataFields', setDataFields);
 	
 });
 
